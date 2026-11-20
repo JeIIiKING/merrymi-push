@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>메리미 · 방송 알림 테스트</title>
+  <link rel="manifest" href="/manifest.webmanifest">
+  <meta name="theme-color" content="#1c1220">
+  <!-- iOS 홈 화면 앱 설정 -->
+  <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="메리미">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+<main>
+  <h1>💍 메리 미 이프 유 캔</h1>
+  <p class="sub">방송 알림 테스트 페이지 — 매일 밤 9시 <b>ON AIR</b> 알림이 이 기기에 오는지 확인해요.</p>
+
+  <!-- 상태 -->
+  <section class="card">
+    <div class="status"><span id="dot" class="dot"></span><span id="statusText">확인 중…</span></div>
+    <p id="statusDesc" class="small" style="margin:8px 0 0"></p>
+    <p class="small" style="margin:6px 0 0">기기: <span id="deviceInfo">-</span></p>
+  </section>
+
+  <!-- iOS: 사파리 탭일 때 안내 -->
+  <section id="iosGuide" class="card guide hidden">
+    <h2>아이폰은 홈 화면에 추가해야 알림이 와요</h2>
+    <ol>
+      <li>사파리 하단 <b>공유 버튼</b>(네모+화살표) 누르기</li>
+      <li><b>홈 화면에 추가</b> 선택 → 추가</li>
+      <li>홈 화면에 생긴 <b>메리미</b> 아이콘으로 다시 열기</li>
+      <li>거기서 <b>방송 알림 받기</b> 누르기</li>
+    </ol>
+    <p class="small">iOS 16.4 이상 필요. 사파리 탭에서는 알림이 오지 않는 게 정상이에요.</p>
+  </section>
+
+  <!-- 구독 -->
+  <section id="subscribeCard" class="card hidden">
+    <h2>알림 등록</h2>
+    <label for="label">이 기기 이름 (관리자 화면에 표시)</label>
+    <input id="label" maxlength="40" placeholder="예: 죠르디 갤럭시 크롬">
+    <button id="btnSubscribe" class="primary">🔔 방송 알림 받기</button>
+    <button id="btnUnsubscribe" class="danger hidden">알림 해제</button>
+  </section>
+
+  <!-- 셀프 테스트 -->
+  <section id="selfTestCard" class="card hidden">
+    <h2>내 기기로 테스트</h2>
+    <p class="small" style="margin-top:0">
+      <b>30초 뒤 보내기</b>를 누르고 바로 브라우저를 완전히 닫아보세요
+      (최근 앱 목록에서 밀어서 종료). 알림이 오면 성공!
+    </p>
+    <div class="row">
+      <button id="btnTestNow" class="ghost">지금 보내기</button>
+      <button id="btnTest30" class="primary">30초 뒤 보내기</button>
+    </div>
+  </section>
+
+  <!-- 갤럭시 안내 -->
+  <section id="androidGuide" class="card guide hidden">
+    <h2>갤럭시: 알림이 늦거나 안 오면</h2>
+    <ol>
+      <li><b>설정 → 배터리 → 백그라운드 사용 제한</b></li>
+      <li><b>절전 예외 앱</b>에 지금 쓰는 브라우저(Chrome 또는 삼성 인터넷) 추가</li>
+      <li>'사용하지 않는 앱 절전/해제 상태'에 브라우저가 있으면 빼기</li>
+      <li>브라우저 설정 → 사이트 설정 → 알림에서 이 사이트가 허용인지 확인</li>
+    </ol>
+  </section>
+
+  <!-- 거부됨 안내 -->
+  <section id="deniedGuide" class="card guide hidden">
+    <h2>알림이 차단돼 있어요</h2>
+    <p class="small" id="deniedHow"></p>
+  </section>
+
+  <p class="small" style="text-align:center">서버 시각(KST) <span id="serverTime">-</span> · <a href="/onair.html" style="color:var(--pink)">방송 화면 미리보기</a></p>
+</main>
+<div id="toast" class="toast hidden"></div>
+<script src="/app.js"></script>
+</body>
+</html>

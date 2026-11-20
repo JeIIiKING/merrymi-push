@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>🔴 ON AIR · 메리미</title>
+  <link rel="manifest" href="/manifest.webmanifest">
+  <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png">
+  <meta name="theme-color" content="#1c1220">
+  <link rel="stylesheet" href="/style.css">
+  <style>
+    .onair { text-align: center; padding: 40px 16px 24px; }
+    .badge { display: inline-flex; align-items: center; gap: 8px; background: var(--red); color: #fff; font-weight: 800;
+      letter-spacing: .12em; padding: 8px 16px; border-radius: 999px; font-size: 15px; }
+    .badge::before { content: ''; width: 9px; height: 9px; border-radius: 50%; background: #fff; animation: blink 1s infinite; }
+    @keyframes blink { 50% { opacity: .2; } }
+    .screen { aspect-ratio: 16/9; background: linear-gradient(135deg, #3b2442, #1a0f1d); border-radius: 14px;
+      display: grid; place-items: center; color: var(--muted); margin: 20px 0 14px; border: 1px solid var(--line); }
+  </style>
+</head>
+<body>
+<main>
+  <div class="onair">
+    <span class="badge">ON AIR</span>
+    <h1 style="margin-top:16px">오늘 밤의 방송</h1>
+    <p class="sub">임시 방송 화면이에요. 본 사이트에서는 여기에 방송·응답 화면이 들어갑니다.</p>
+  </div>
+  <div class="screen">📺 방송 화면 자리</div>
+  <section class="card">
+    <h2>테스트 확인</h2>
+    <p id="from" class="small" style="margin:0"></p>
+  </section>
+  <a href="/"><button class="ghost">알림 설정으로 돌아가기</button></a>
+</main>
+<script>
+  const n = new URLSearchParams(location.search).get('n');
+  document.getElementById('from').innerHTML = n
+    ? `✅ 알림(<code>#${n}</code>)을 눌러서 이 화면으로 들어왔어요. <b>알림 탭 → 방송 화면 이동 성공.</b>`
+    : '알림을 통하지 않고 직접 들어왔어요.';
+</script>
+</body>
+</html>
