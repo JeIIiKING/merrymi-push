@@ -1,0 +1,15 @@
+{
+  "name": "merrymi-push-test",
+  "version": "0.1.0",
+  "private": true,
+  "description": "메리 미 이프 유 캔 — 웹 푸시(ON AIR 알림) 테스트",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "keys": "web-push generate-vapid-keys"
+  },
+  "engines": { "node": ">=18" },
+  "dependencies": {
+    "web-push": "^3.6.7"
+  }
+}
